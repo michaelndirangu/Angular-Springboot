@@ -1,0 +1,75 @@
+<div class="main">
+    <mat-card color="warn">
+        <button mat-raised-button style="margin-right: 10px; background: white;" (click)="openDialog()">
+            <mat-icon>add_circle</mat-icon>
+        </button>
+    </mat-card>
+    <div class="table">
+        <mat-card>
+            <mat-form-field>
+                <input class="form-control" matInput (keyup)="applyFilter($event)" placeholder="Filter" #input>
+            </mat-form-field>
+            
+            <table mat-table [dataSource]="dataSource" class="mat-elevation-z8" matSort >
+            
+                <!-- ID Column -->
+                <ng-container matColumnDef="id">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> ID. </th>
+                <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+                </ng-container>
+
+                <!-- Image Column -->
+                <ng-container matColumnDef="imageUrl">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Image. </th>
+                    <td mat-cell *matCellDef="let element"> <img [src]="element.imageUrl" width="60px" height="60px" style="border-radius: 50%;"/> </td>
+                </ng-container>
+
+                <!-- Name Column -->
+                <ng-container matColumnDef="name">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Name </th>
+                <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+                </ng-container>
+            
+                <!-- Email Column -->
+                <ng-container matColumnDef="email">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Email </th>
+                <td mat-cell *matCellDef="let element"> {{element.email}} </td>
+                </ng-container>
+            
+                <!-- Address Column -->
+                <ng-container matColumnDef="address">
+                <th mat-header-cell *matHeaderCellDef mat-sort-header> Address </th>
+                <td mat-cell *matCellDef="let element"> {{element.address}} </td>
+                </ng-container>
+
+                 <!-- Phone Number Column -->
+                 <ng-container matColumnDef="phoneno">
+                    <th mat-header-cell *matHeaderCellDef mat-sort-header> Phone No </th>
+                    <td mat-cell *matCellDef="let element"> {{element.phoneno}} </td>
+                    </ng-container>
+
+
+                <ng-container matColumnDef="Action">
+                        <th mat-header-cell *matHeaderCellDef mat-sort-header> Action </th>
+                        <td mat-cell *matCellDef="let element">
+                            <button mat-icon-button color="primary" (click)="editClient(element)">
+                                <span>
+                                    <mat-icon>edit</mat-icon>
+                                </span>
+                            </button>
+                            <button mat-icon-button color="warn" (click)="deleteClient(element.id)"> 
+                                <span>
+                                    <mat-icon>delete</mat-icon>
+                                </span>
+                            </button>
+                        </td> 
+                </ng-container> 
+            
+                <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+                <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+            </table>
+
+            <mat-paginator [pageSizeOptions]="[5,10,25,100]" aria-label="Select page of clients"></mat-paginator>
+            
+        </mat-card>
+    </div>

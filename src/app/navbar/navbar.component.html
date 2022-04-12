@@ -1,0 +1,50 @@
+<mat-toolbar color="success" class="toolbar" >
+
+    <span>
+        <button mat-icon-button>
+            <mat-icon (click)="sidenav.toggle();">menu</mat-icon>
+        </button>
+    </span>
+
+    <span class="material-icons">account_balance</span>
+    <span >Dashboard</span>
+
+    <div class="spacer"></div>
+
+    <a mat-button>Settings</a>
+    <a mat-button routerLink="/registration" routerLinkActive="active">Register</a>
+    <a mat-button routerLink="/manage-accounts" routerLinkActive="active">Manage Accounts</a>
+    <button mat-icon-button [matMenuTriggerFor] = "menu"><span class="material-icons">account_circle</span></button>
+    <mat-menu #menu = "matMenu">
+        <button mat-menu-item>
+            <mat-icon>person_outline</mat-icon>
+            <span>User Details</span>
+        </button>
+        <button mat-menu-item>
+            <mat-icon>settings</mat-icon>
+            <span>Settings</span>
+        </button>
+        <button mat-menu-item>
+            <mat-icon>logout</mat-icon>
+            <span>Log out</span>
+        </button>
+    </mat-menu>
+</mat-toolbar>
+
+<!--SideNav Container-->
+<mat-sidenav-container>
+    <mat-sidenav #sidenav opened="true" mode="side">
+        <mat-nav-list>
+            <a routerLink="/home" mat-list-item>Home</a>
+            <a mat-list-item routerLink="/registration" routerLinkActive="active">Create Account</a>
+            <a mat-list-item>About Us</a>
+            <a mat-list-item>contact Us</a>
+            <a mat-list-item>Help</a>
+        </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+        <div style="height: 88vh">
+            <router-outlet></router-outlet>
+        </div>
+    </mat-sidenav-content>
+</mat-sidenav-container>

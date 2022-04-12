@@ -1,0 +1,35 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap');
+@import url("https://fonts.googleapis.com/icon?family=Material+Icons");
+
+.spacer {
+    flex: 1 1 auto;
+}
+.mat-success {
+    color: #f0261f !important;
+    background-color: #1ff0db !important;
+}
+.mat-aqua {
+    color: #1ff0db !important;
+    background-color: #f0261f !important;
+}
+
+.topnav {
+    position: fixed;
+}
+
+mat-toolbar a.active {
+    color: blue;
+}
+mat-toolbar a:hover {
+    color: aliceblue;
+}
+
+mat-sidenav {
+    background-color: #ec0d50;
+    width: 150px;
+
+}
+
+mat-nav-list a:hover{
+    color: aliceblue;
+}
